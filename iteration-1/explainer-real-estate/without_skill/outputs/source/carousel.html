@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Terra Ledger RERA Carousel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#15243D;
+    --navy-2:#1F3354;
+    --navy-soft:#3A4C6B;
+    --sand:#E9DDC7;
+    --sand-2:#F4EDE0;
+    --sand-deep:#C9B48D;
+    --paper:#FBF8F2;
+    --line:#D9CBB0;
+    --flag:#A4532F;          /* muted clay used only for "red flag" lines */
+    --ok:#3F6B58;            /* muted green used only for status chips */
+    --serif:"Fraunces", Georgia, "Times New Roman", serif;
+    --sans:"Manrope", "Segoe UI", Arial, sans-serif;
+    --mono:"JetBrains Mono", Consolas, monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#888;font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  .slide{width:1080px;height:1350px;position:relative;overflow:hidden;margin:0 auto 40px;}
+  .navy{background:var(--navy);color:var(--sand-2)}
+  .light{background:var(--sand-2);color:var(--navy)}
+
+  /* subtle paper grain + contour lines (land / ledger motif) */
+  .contours{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.5}
+
+  /* top bar */
+  .top{position:absolute;top:72px;left:88px;right:88px;display:flex;justify-content:space-between;align-items:center;font-size:22px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+  .brand{display:flex;align-items:center;gap:14px}
+  .mark{width:38px;height:38px;border-radius:50%;border:2px solid currentColor;position:relative;overflow:hidden}
+  .mark:before{content:"";position:absolute;left:0;right:0;top:58%;height:2px;background:currentColor}
+  .mark:after{content:"";position:absolute;left:50%;top:22%;width:2px;height:36%;background:currentColor;transform:translateX(-50%)}
+  .pager{font-family:var(--mono);font-weight:500;letter-spacing:.06em;font-size:22px;opacity:.75}
+
+  /* bottom bar */
+  .bottom{position:absolute;bottom:68px;left:88px;right:88px;display:flex;justify-content:space-between;align-items:center;font-size:22px;font-weight:600}
+  .save{display:flex;align-items:center;gap:12px;opacity:.85}
+  .save svg{width:26px;height:26px}
+  .swipe{display:flex;align-items:center;gap:12px;opacity:.85}
+  .progress{display:flex;gap:8px}
+  .progress i{display:block;width:26px;height:4px;border-radius:2px;background:currentColor;opacity:.22}
+  .progress i.on{opacity:1}
+
+  /* ---------- COVER ---------- */
+  .cover .kicker{position:absolute;top:196px;left:88px;font-size:26px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sand-deep)}
+  .cover h1{position:absolute;top:246px;left:88px;right:88px;font-family:var(--serif);font-weight:500;font-size:98px;line-height:1.02;letter-spacing:-.02em;color:var(--paper)}
+  .cover h1 em{font-style:italic;color:var(--sand)}
+  .cover .sub{position:absolute;top:486px;left:88px;width:880px;font-size:32px;line-height:1.45;color:var(--sand);opacity:.92}
+
+  .ledger{position:absolute;left:88px;right:88px;top:640px;background:var(--sand-2);color:var(--navy);border-radius:28px;padding:40px 48px;box-shadow:0 30px 60px rgba(0,0,0,.28)}
+  .ledger .lhead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--navy);padding-bottom:18px;margin-bottom:8px}
+  .ledger .lhead b{font-family:var(--serif);font-weight:600;font-size:34px}
+  .ledger .lhead span{font-family:var(--mono);font-size:20px;opacity:.6}
+  .row{display:flex;align-items:center;gap:22px;padding:18px 0;border-bottom:1px dashed var(--line);font-size:30px;font-weight:600}
+  .row:last-child{border-bottom:0}
+  .row .n{font-family:var(--mono);font-size:22px;opacity:.55;width:40px}
+  .row .box{margin-left:auto;width:34px;height:34px;border:2.5px solid var(--navy);border-radius:8px}
+
+  /* ---------- POINT SLIDES ---------- */
+  .num{position:absolute;top:150px;left:76px;font-family:var(--serif);font-weight:400;font-size:300px;line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:2.5px var(--sand-deep)}
+  .label{position:absolute;top:218px;left:420px;font-size:22px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--navy-soft)}
+  .pt h2{position:absolute;top:258px;left:420px;right:88px;font-family:var(--serif);font-weight:500;font-size:62px;line-height:1.06;letter-spacing:-.015em}
+  .why{position:absolute;top:480px;left:88px;right:88px;font-size:31px;line-height:1.5;color:var(--navy-soft)}
+  .why b{color:var(--navy);font-weight:700}
+
+  /* portal mock card */
+  .card{position:absolute;left:88px;right:88px;top:636px;background:var(--paper);border:2px solid var(--navy);border-radius:24px;overflow:hidden;box-shadow:12px 12px 0 var(--sand)}
+  .card .chrome{background:var(--navy);color:var(--sand-2);display:flex;align-items:center;gap:14px;padding:16px 26px;font-size:20px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  .card .dots{display:flex;gap:8px}
+  .card .dots i{width:12px;height:12px;border-radius:50%;background:var(--sand-deep);opacity:.7;display:block}
+  .card .chrome .t{margin-left:8px}
+  .card .body{padding:14px 30px 20px}
+  .field{display:flex;justify-content:space-between;align-items:center;padding:15px 14px;border-bottom:1px solid var(--line);font-size:26px}
+  .field:last-child{border-bottom:0}
+  .field .k{color:var(--navy-soft);font-weight:500}
+  .field .v{font-weight:700;color:var(--navy);display:flex;align-items:center;gap:12px}
+  .field .v.mono{font-family:var(--mono);font-weight:500;font-size:25px}
+  .hl{background:var(--sand);border-radius:12px;border-bottom-color:transparent;position:relative}
+  .hl:before{content:"";position:absolute;left:-30px;top:10px;bottom:10px;width:7px;border-radius:0 4px 4px 0;background:var(--navy)}
+  .chip{font-size:19px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;border-radius:999px;border:2px solid currentColor}
+  .chip.ok{color:var(--ok)}
+  .chip.warn{color:var(--flag)}
+  .chip.nav{color:var(--navy)}
+  .tick{width:30px;height:30px}
+
+  /* bars for progress slide */
+  .bar{display:block;flex:none;width:300px;height:16px;border-radius:8px;background:var(--sand);overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--navy);border-radius:8px}
+
+  /* red flag strip */
+  .flag{position:absolute;left:88px;right:88px;bottom:150px;display:flex;gap:22px;align-items:flex-start;padding:26px 30px;border-radius:20px;background:var(--sand);border-left:8px solid var(--flag)}
+  .flag svg{flex:0 0 40px;height:40px;margin-top:2px}
+  .flag p{font-size:27px;line-height:1.42;color:var(--navy)}
+  .flag p b{display:block;font-size:20px;letter-spacing:.16em;text-transform:uppercase;color:var(--flag);margin-bottom:4px}
+
+  /* ---------- CTA ---------- */
+  .cta .kicker{position:absolute;top:220px;left:88px;font-size:26px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sand-deep)}
+  .cta h2{position:absolute;top:272px;left:88px;right:88px;font-family:var(--serif);font-weight:500;font-size:92px;line-height:1.04;letter-spacing:-.02em;color:var(--paper)}
+  .cta h2 em{font-style:italic;color:var(--sand)}
+  .cta .sub{position:absolute;top:500px;left:88px;width:820px;font-size:32px;line-height:1.48;color:var(--sand)}
+  .dm{position:absolute;top:660px;left:88px;right:88px;background:var(--sand-2);border-radius:30px;padding:44px 50px;color:var(--navy);box-shadow:0 30px 60px rgba(0,0,0,.28)}
+  .dm .lbl{font-size:22px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--navy-soft)}
+  .dm .big{display:flex;align-items:center;gap:26px;margin-top:18px}
+  .dm .big span{font-family:var(--serif);font-size:56px;font-weight:500}
+  .dm .word{font-family:var(--sans);font-weight:800;font-size:64px;letter-spacing:.1em;background:var(--navy);color:var(--sand-2);padding:10px 34px 12px;border-radius:18px}
+  .dm ul{list-style:none;margin-top:30px;border-top:1px dashed var(--line);padding-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px 30px}
+  .dm li{font-size:25px;font-weight:600;display:flex;gap:12px;align-items:center}
+  .dm li:before{content:"";flex:0 0 12px;height:12px;border-radius:50%;background:var(--sand-deep)}
+  .cta .share{position:absolute;top:1080px;left:88px;right:88px;font-size:24px;color:var(--sand);opacity:.85;line-height:1.5}
+  .disc{position:absolute;bottom:30px;left:88px;right:88px;font-size:17px;opacity:.5}
+</style>
+</head>
+<body>
+
+<!-- reusable contour motif -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="contour" viewBox="0 0 1080 1350">
+      <g fill="none" stroke-width="1.6">
+        <path d="M-40 1180 C 180 1080, 360 1240, 560 1150 S 900 1010, 1120 1100"/>
+        <path d="M-40 1230 C 200 1130, 380 1290, 580 1200 S 920 1060, 1120 1150"/>
+        <path d="M-40 1280 C 220 1180, 400 1340, 600 1250 S 940 1110, 1120 1200"/>
+        <path d="M-40 1330 C 240 1230, 420 1390, 620 1300 S 960 1160, 1120 1250"/>
+      </g>
+    </symbol>
+    <symbol id="flagicon" viewBox="0 0 40 40">
+      <circle cx="20" cy="20" r="18" fill="none" stroke="#A4532F" stroke-width="3"/>
+      <rect x="18" y="9" width="4" height="15" rx="2" fill="#A4532F"/>
+      <circle cx="20" cy="30" r="2.6" fill="#A4532F"/>
+    </symbol>
+    <symbol id="bookmark" viewBox="0 0 24 24">
+      <path d="M6 3h12v18l-6-4.5L6 21z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="arrow" viewBox="0 0 40 20">
+      <path d="M2 10h34M28 3l8 7-8 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="tick" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="14" fill="#3F6B58"/>
+      <path d="M8.5 15.5l4 4 9-9" fill="none" stroke="#FBF8F2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ SLIDE 1: COVER ============ -->
+<section class="slide navy cover" id="s1">
+  <svg class="contours" style="color:#C9B48D;opacity:.28"><use href="#contour" stroke="currentColor"/></svg>
+  <div class="top"><div class="brand"><span class="mark"></span>Terra Ledger</div><div class="pager">01 / 07</div></div>
+  <div class="kicker">First-home buyer's guide</div>
+  <h1>Before you pay the token amount, <em>check RERA.</em></h1>
+  <p class="sub">5 things to look up on the MahaRERA website before you book a flat. Takes about 20 minutes.</p>
+  <div class="ledger">
+    <div class="lhead"><b>Your RERA check</b><span>PROJECT: ________</span></div>
+    <div class="row"><span class="n">01</span>Registration number &amp; validity<span class="box"></span></div>
+    <div class="row"><span class="n">02</span>Approved plans<span class="box"></span></div>
+    <div class="row"><span class="n">03</span>Litigation on the project<span class="box"></span></div>
+    <div class="row"><span class="n">04</span>Construction progress<span class="box"></span></div>
+    <div class="row"><span class="n">05</span>The developer's track record<span class="box"></span></div>
+  </div>
+  <div class="bottom">
+    <div class="save"><svg><use href="#bookmark"/></svg>Save for your site visit</div>
+    <div class="swipe">Swipe <svg width="40" height="20"><use href="#arrow"/></svg></div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 2 ============ -->
+<section class="slide light pt" id="s2">
+  <div class="top"><div class="brand"><span class="mark"></span>Terra Ledger</div><div class="pager">02 / 07</div></div>
+  <div class="num">01</div>
+  <div class="label">Check one</div>
+  <h2>Registration number &amp; validity</h2>
+  <p class="why">Every project in Maharashtra must be registered before it is advertised. Search the number from the brochure and make sure it <b>matches this exact project and phase</b>.</p>
+  <div class="card">
+    <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="t">Project details</span></div>
+    <div class="body">
+      <div class="field hl"><span class="k">Registration no.</span><span class="v mono">P52100XXXXXX</span></div>
+      <div class="field"><span class="k">Project / phase name</span><span class="v">Matches brochure <svg class="tick"><use href="#tick"/></svg></span></div>
+      <div class="field"><span class="k">Proposed completion</span><span class="v">Dec 2028</span></div>
+      <div class="field"><span class="k">Extensions taken</span><span class="v"><span class="chip ok">None</span></span></div>
+    </div>
+  </div>
+  <div class="flag"><svg><use href="#flagicon"/></svg><p><b>Red flag</b>No number in the ad, a number for a different phase, or a completion date far later than what sales told you.</p></div>
+  <div class="bottom"><div class="progress"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div><div class="swipe">Swipe <svg width="40" height="20"><use href="#arrow"/></svg></div></div>
+</section>
+
+<!-- ============ SLIDE 3 ============ -->
+<section class="slide light pt" id="s3">
+  <div class="top"><div class="brand"><span class="mark"></span>Terra Ledger</div><div class="pager">03 / 07</div></div>
+  <div class="num">02</div>
+  <div class="label">Check two</div>
+  <h2>The approved plans, not the brochure</h2>
+  <p class="why">Open the uploaded documents. The <b>sanctioned plan</b> shows what the developer is actually allowed to build. The brochure shows what they want to sell.</p>
+  <div class="card">
+    <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="t">Uploaded documents</span></div>
+    <div class="body">
+      <div class="field hl"><span class="k">Sanctioned building plan</span><span class="v"><span class="chip nav">View PDF</span></span></div>
+      <div class="field"><span class="k">Commencement certificate</span><span class="v"><span class="chip nav">View PDF</span></span></div>
+      <div class="field"><span class="k">Number of floors approved</span><span class="v">14 of 14 <svg class="tick"><use href="#tick"/></svg></span></div>
+      <div class="field"><span class="k">Carpet area of your unit</span><span class="v">Matches quote <svg class="tick"><use href="#tick"/></svg></span></div>
+    </div>
+  </div>
+  <div class="flag"><svg><use href="#flagicon"/></svg><p><b>Red flag</b>Floors, amenities or a clubhouse in the brochure that don't appear in the approved plan.</p></div>
+  <div class="bottom"><div class="progress"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></div><div class="swipe">Swipe <svg width="40" height="20"><use href="#arrow"/></svg></div></div>
+</section>
+
+<!-- ============ SLIDE 4 ============ -->
+<section class="slide light pt" id="s4">
+  <div class="top"><div class="brand"><span class="mark"></span>Terra Ledger</div><div class="pager">04 / 07</div></div>
+  <div class="num">03</div>
+  <div class="label">Check three</div>
+  <h2>Any litigation on the project</h2>
+  <p class="why">Developers have to disclose court cases on the project or the land. A pending title dispute can <b>hold up possession for years</b>, even if construction looks fine.</p>
+  <div class="card">
+    <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="t">Litigation details</span></div>
+    <div class="body">
+      <div class="field hl"><span class="k">Cases related to this project</span><span class="v"><span class="chip ok">No</span></span></div>
+      <div class="field"><span class="k">Cases on the land / title</span><span class="v"><span class="chip ok">No</span></span></div>
+      <div class="field"><span class="k">Encumbrance declared</span><span class="v"><span class="chip warn">Check</span></span></div>
+      <div class="field"><span class="k">Title report uploaded</span><span class="v">Yes <svg class="tick"><use href="#tick"/></svg></span></div>
+    </div>
+  </div>
+  <div class="flag"><svg><use href="#flagicon"/></svg><p><b>Red flag</b>Any "Yes" here. Don't pay anything until a property lawyer has read the case details.</p></div>
+  <div class="bottom"><div class="progress"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><div class="swipe">Swipe <svg width="40" height="20"><use href="#arrow"/></svg></div></div>
+</section>
+
+<!-- ============ SLIDE 5 ============ -->
+<section class="slide light pt" id="s5">
+  <div class="top"><div class="brand"><span class="mark"></span>Terra Ledger</div><div class="pager">05 / 07</div></div>
+  <div class="num">04</div>
+  <div class="label">Check four</div>
+  <h2>Real construction progress</h2>
+  <p class="why">Developers file regular progress updates and certificates. Compare them with the timeline: <b>is the building keeping pace with the promised date?</b></p>
+  <div class="card">
+    <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="t">Progress update &middot; latest quarter</span></div>
+    <div class="body">
+      <div class="field"><span class="k">Excavation &amp; plinth</span><span class="v"><span class="bar"><i style="width:100%"></i></span>100%</span></div>
+      <div class="field hl"><span class="k">Slabs cast</span><span class="v"><span class="bar"><i style="width:43%"></i></span>6 / 14</span></div>
+      <div class="field"><span class="k">Finishing work</span><span class="v"><span class="bar"><i style="width:0%"></i></span>0%</span></div>
+      <div class="field"><span class="k">Units booked so far</span><span class="v">62 of 120</span></div>
+    </div>
+  </div>
+  <div class="flag"><svg><use href="#flagicon"/></svg><p><b>Red flag</b>Updates missing for the last few quarters, or very slow progress against a near completion date.</p></div>
+  <div class="bottom"><div class="progress"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><div class="swipe">Swipe <svg width="40" height="20"><use href="#arrow"/></svg></div></div>
+</section>
+
+<!-- ============ SLIDE 6 ============ -->
+<section class="slide light pt" id="s6">
+  <div class="top"><div class="brand"><span class="mark"></span>Terra Ledger</div><div class="pager">06 / 07</div></div>
+  <div class="num">05</div>
+  <div class="label">Check five</div>
+  <h2>The developer's track record</h2>
+  <p class="why">Search the promoter's name, not just the project. Their <b>older projects and buyer complaints</b> tell you how they behave when things get hard.</p>
+  <div class="card">
+    <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><span class="t">Promoter &middot; other projects</span></div>
+    <div class="body">
+      <div class="field"><span class="k">Project A &middot; Baner</span><span class="v"><span class="chip ok">Completed on time</span></span></div>
+      <div class="field"><span class="k">Project B &middot; Wakad</span><span class="v"><span class="chip warn">Delayed 14 months</span></span></div>
+      <div class="field"><span class="k">Project C &middot; Hinjewadi</span><span class="v"><span class="chip warn">2 extensions</span></span></div>
+      <div class="field hl"><span class="k">Complaints filed by buyers</span><span class="v">3</span></div>
+    </div>
+  </div>
+  <div class="flag"><svg><use href="#flagicon"/></svg><p><b>Red flag</b>A pattern: repeated extensions or several complaints across older projects.</p></div>
+  <div class="bottom"><div class="progress"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><div class="swipe">Swipe <svg width="40" height="20"><use href="#arrow"/></svg></div></div>
+</section>
+
+<!-- ============ SLIDE 7: CTA ============ -->
+<section class="slide navy cta" id="s7">
+  <svg class="contours" style="color:#C9B48D;opacity:.28"><use href="#contour" stroke="currentColor"/></svg>
+  <div class="top"><div class="brand"><span class="mark"></span>Terra Ledger</div><div class="pager">07 / 07</div></div>
+  <div class="kicker">Get the checklist</div>
+  <h2>Want this as a <em>step-by-step</em> checklist?</h2>
+  <p class="sub">We'll send you a free one-page guide that shows exactly where to click on the MahaRERA site.</p>
+  <div class="dm">
+    <div class="lbl">Send us a DM</div>
+    <div class="big"><span>Just type</span><span class="word">RERA</span></div>
+    <ul>
+      <li>Where each check sits</li>
+      <li>What to screenshot</li>
+      <li>Red flags at a glance</li>
+      <li>Questions for the developer</li>
+    </ul>
+  </div>
+  <p class="share">Save this for your next site visit. Send it to a friend house-hunting in Pune.</p>
+  <div class="bottom" style="bottom:86px"><div class="brand" style="font-size:22px;letter-spacing:.14em;text-transform:uppercase;font-weight:700"><span class="mark"></span>Terra Ledger &middot; Property Advisory, Pune</div><div class="save"><svg><use href="#bookmark"/></svg>Save</div></div>
+  <p class="disc">General information only, not legal advice. Portal screens shown are illustrative.</p>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "eval_name": "speaker-card-static",
+  "prompt": "need a single static post announcing our speaker for Pixel Chai Vol. 4 (a design meetup in Bangalore). Speaker: Ananya Rao, Principal Product Designer at a fintech startup. Talk: 'Designing trust in money apps'. Saturday 7 Dec, 5 PM, The Courtyard, Indiranagar. we don't have her photo yet so make it type-led. brand vibe is playful but grown-up, warm chai colours",
+  "assertions": [
+    "A single static image is rendered as a PNG file in an Instagram feed size (1080 wide)",
+    "The image shows the speaker name Ananya Rao, her role, the talk title 'Designing trust in money apps', Saturday 7 Dec, 5 PM, and The Courtyard, Indiranagar",
+    "The design is type-led with no portrait or invented photo of the speaker",
+    "A caption for the post is provided in a file"
+  ]
+}

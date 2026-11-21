@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pixel Chai Vol. 4 - Speaker card</title>
+<!--
+  Pixel Chai Vol. 4 · speaker announcement · single static 1080x1350 (4:5)
+  Concept: "Speaker confirmed" — the post is a payment-confirmation receipt, the very screen
+  her talk is about (the moment a money app earns or loses trust). Type-led, no photo.
+  Render: python <skill>/scripts/render.py slides.html out
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..800,0..100;1,9..144,300..800,0..100&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=block" rel="stylesheet">
+<style>
+:root{
+  --W:1080px; --H:1350px;
+  --m:88px; --u:8px;
+
+  /* chai palette: 60 decoction brown field / 30 milky-chai receipt + ink / 10 ginger accent */
+  --field:#3A2418;      /* strong decoction brown */
+  --paper:#F3E4CC;      /* milky chai */
+  --ink:#2A1A10;        /* 13.4:1 on paper */
+  --ink-2:#6B5040;      /* muted, 5.9:1 on paper */
+  --accent:#A84718;     /* ginger, 4.7:1 on paper */
+  --on-field:#F3E4CC;   /* 11.6:1 on field */
+  --on-field-2:#C9AE90; /* 6.9:1 on field */
+
+  --display:"Fraunces", Georgia, serif;
+  --text:"Inter Tight", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#6f6f6f;display:flex;flex-direction:column;align-items:center;gap:48px;padding:48px 0;font-family:var(--text)}
+.slide{position:relative;width:var(--W);height:var(--H);overflow:hidden;background:var(--field);isolation:isolate;color:var(--on-field)}
+
+/* soft warm light from top-left, like a lamp over a chai table */
+.slide::before{content:"";position:absolute;inset:0;z-index:0;
+  background:radial-gradient(70% 55% at 30% 28%,rgba(201,140,80,.22),transparent 70%),
+             radial-gradient(60% 50% at 90% 100%,rgba(0,0,0,.28),transparent 70%)}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:50;opacity:.12;mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ── furniture on the field ── */
+.top{position:absolute;z-index:2;left:var(--m);right:var(--m);top:72px;display:flex;justify-content:space-between;align-items:baseline}
+.wordmark{font:600 30px/1 var(--display);font-variation-settings:"SOFT" 100,"opsz" 36;letter-spacing:-.01em;color:var(--on-field)}
+.meta{font:500 26px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--on-field-2)}
+.bottom{position:absolute;z-index:2;left:var(--m);right:var(--m);bottom:72px;display:flex;justify-content:space-between;align-items:baseline}
+.bottom .tag{font:400 30px/1 var(--text);color:var(--on-field-2)}
+.bottom .cta{font:600 30px/1 var(--text);color:var(--on-field);display:flex;align-items:center;gap:14px}
+.bottom .cta::after{content:"";width:56px;height:2px;background:currentColor}
+
+/* ── the receipt ── */
+.receipt{position:absolute;z-index:2;left:var(--m);right:var(--m);top:152px;height:1010px;
+  transform:rotate(-1.2deg);transform-origin:50% 40%;
+  filter:drop-shadow(0 30px 40px rgba(0,0,0,.38)) drop-shadow(0 4px 8px rgba(0,0,0,.25))}
+.paper{position:absolute;inset:0;background:var(--paper);color:var(--ink);
+  padding:72px 72px 0;
+  /* torn zig-zag bottom edge */
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 22px) no-repeat,
+               conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/44px 22px repeat-x;
+          mask:linear-gradient(#000 0 0) top/100% calc(100% - 22px) no-repeat,
+               conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/44px 22px repeat-x}
+/* paper fibre */
+.paper::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .1 0 0 0 .8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* the motif: a chai-glass ring left on the bill */
+.ring{position:absolute;right:-64px;top:-70px;width:290px;height:290px;border-radius:50%;pointer-events:none;
+  border:7px solid rgba(150,85,35,.16);box-shadow:inset 0 0 0 2px rgba(150,85,35,.10),0 0 0 2px rgba(150,85,35,.06);
+  -webkit-mask:conic-gradient(from 200deg,#000 0 55%,rgba(0,0,0,.25) 70%,#000 92%);mask:conic-gradient(from 200deg,#000 0 55%,rgba(0,0,0,.25) 70%,#000 92%);
+  transform:rotate(12deg) scale(1,.96)}
+.ring.r2{right:-38px;top:-40px;width:276px;height:276px;border-width:3px;border-color:rgba(150,85,35,.09);box-shadow:none;transform:rotate(-30deg)}
+.status{display:flex;align-items:center;gap:24px}
+.tick{width:72px;height:72px;border-radius:50%;background:var(--accent);display:grid;place-items:center;flex:none}
+.tick svg{width:38px;height:38px;stroke:var(--paper);stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.label{font:700 26px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.status .label{color:var(--accent)}
+
+.name{margin-top:48px;font:500 120px/.95 var(--display);font-variation-settings:"SOFT" 60,"opsz" 144;letter-spacing:-.03em}
+.role{margin-top:24px;font:400 30px/1.3 var(--text);color:var(--ink-2)}
+
+.perf{margin:44px -72px 0;height:0;border-top:3px dashed rgba(42,26,16,.28);position:relative}
+.perf::before,.perf::after{content:"";position:absolute;top:-19px;width:36px;height:36px;border-radius:50%;background:var(--field)}
+.perf::before{left:-18px} .perf::after{right:-18px}
+
+.talk-label{margin-top:40px;color:var(--ink-2)}
+.talk{margin-top:18px;font:400 72px/1.02 var(--display);font-variation-settings:"SOFT" 100,"opsz" 96;letter-spacing:-.02em}
+.talk em{font-style:italic;font-weight:400}
+
+.rows{margin-top:36px;display:grid;grid-template-columns:216px 1fr;row-gap:18px;font:500 26px/1.25 var(--mono);letter-spacing:.02em}
+.rows dt{color:var(--ink-2);text-transform:uppercase;letter-spacing:.14em}
+.rows dd{color:var(--ink)}
+.rows .seat{color:var(--accent);font-weight:700}
+.foot{position:absolute;left:0;right:0;bottom:62px}
+.foot .perf{margin:0}
+.foot .label{margin-top:40px;text-align:center;color:var(--ink-2)}
+</style>
+</head>
+<body>
+
+<section class="slide grain">
+  <div class="top">
+    <div class="wordmark">Pixel Chai</div>
+    <div class="meta">Vol. 04 · Bangalore</div>
+  </div>
+
+  <div class="receipt">
+    <div class="paper">
+      <div class="ring"></div><div class="ring r2"></div>
+
+      <div class="status">
+        <div class="tick"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <div class="label">Speaker confirmed</div>
+      </div>
+
+      <h1 class="name">Ananya Rao</h1>
+      <p class="role">Principal Product Designer, fintech startup</p>
+
+      <div class="perf"></div>
+
+      <div class="label talk-label">Talk</div>
+      <h2 class="talk">Designing <em>trust</em><br>in money apps</h2>
+
+      <dl class="rows">
+        <dt>When</dt><dd>Sat 7 Dec · 5:00 PM</dd>
+        <dt>Where</dt><dd>The Courtyard, Indiranagar</dd>
+        <dt>Your seat</dt><dd class="seat">Pending · RSVP →</dd>
+      </dl>
+
+      <div class="foot">
+        <div class="perf"></div>
+        <div class="label">Thank you · Visit again</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <div class="tag">A design meetup, over chai.</div>
+    <div class="cta">Link in bio</div>
+  </div>
+</section>
+
+</body>
+</html>

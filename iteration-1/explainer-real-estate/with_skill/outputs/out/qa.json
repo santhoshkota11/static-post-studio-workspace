@@ -1,0 +1,122 @@
+{
+  "slides": [
+    {
+      "slide": 1,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Fraunces",
+        "IBM Plex Mono",
+        "Manrope"
+      ],
+      "sizes": [
+        116,
+        36
+      ],
+      "issues": []
+    },
+    {
+      "slide": 2,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Fraunces",
+        "IBM Plex Mono",
+        "Manrope"
+      ],
+      "sizes": [
+        200,
+        80,
+        36,
+        30
+      ],
+      "issues": []
+    },
+    {
+      "slide": 3,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Fraunces",
+        "IBM Plex Mono",
+        "Manrope"
+      ],
+      "sizes": [
+        200,
+        80,
+        36,
+        30
+      ],
+      "issues": []
+    },
+    {
+      "slide": 4,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Fraunces",
+        "IBM Plex Mono",
+        "Manrope"
+      ],
+      "sizes": [
+        200,
+        80,
+        36,
+        30
+      ],
+      "issues": []
+    },
+    {
+      "slide": 5,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Fraunces",
+        "IBM Plex Mono",
+        "Manrope"
+      ],
+      "sizes": [
+        200,
+        80,
+        36,
+        30
+      ],
+      "issues": []
+    },
+    {
+      "slide": 6,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Fraunces",
+        "IBM Plex Mono",
+        "Manrope"
+      ],
+      "sizes": [
+        200,
+        80,
+        36,
+        30
+      ],
+      "issues": []
+    },
+    {
+      "slide": 7,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Fraunces",
+        "IBM Plex Mono",
+        "Manrope"
+      ],
+      "sizes": [
+        80,
+        34,
+        30
+      ],
+      "issues": []
+    }
+  ],
+  "broken": [],
+  "fontsMissing": []
+}

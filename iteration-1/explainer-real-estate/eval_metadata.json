@@ -1,0 +1,12 @@
+{
+  "eval_name": "explainer-real-estate",
+  "prompt": "Make a 7 slide educational carousel for Terra Ledger, a property advisory firm in Pune. Topic: '5 things to check on the RERA website before you book a flat'. Audience is first-time home buyers aged 28-38. Brand is calm and trustworthy, navy and sand colours, they want people to save it. No photos, keep it graphic. Final slide should push them to DM 'RERA' for a free checklist.",
+  "assertions": [
+    "Exactly 7 slide images are rendered as PNG files in a 4:5 (1080x1350) format",
+    "Slide 1 is a hook cover and slides 2-6 each cover one distinct thing to check on the RERA website",
+    "The final slide asks people to DM 'RERA' for the free checklist",
+    "The design uses no photographs (graphic only) in a navy and sand palette",
+    "A caption and per-slide alt text are provided in files",
+    "No body text on any slide is smaller than 24 px at 1080 px width (excluding legal/micro text)"
+  ]
+}

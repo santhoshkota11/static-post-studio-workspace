@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Exactly 7 slide images are rendered as PNG files in a 4:5 (1080x1350) format",
+      "passed": true,
+      "evidence": "7 PNGs at 1080x1350"
+    },
+    {
+      "text": "Slide 1 is a hook cover and slides 2-6 each cover one distinct thing to check on the RERA website",
+      "passed": true,
+      "evidence": "Cover hook '5 things to check on RERA, before you book a flat'; slides 2-6: registration, approved plan, land title, progress, track record"
+    },
+    {
+      "text": "The final slide asks people to DM 'RERA' for the free checklist",
+      "passed": true,
+      "evidence": "Slide 7: 'DM us \"RERA\"' panel for the free checklist"
+    },
+    {
+      "text": "The design uses no photographs (graphic only) in a navy and sand palette",
+      "passed": true,
+      "evidence": "No images; navy #13254A and sand #EEE6D8 (plus a small clay accent for red flags)"
+    },
+    {
+      "text": "A caption and per-slide alt text are provided in files",
+      "passed": true,
+      "evidence": "caption.md contains caption, hashtags and alt text per slide"
+    },
+    {
+      "text": "No body text on any slide is smaller than 24 px at 1080 px width (excluding legal/micro text)",
+      "passed": true,
+      "evidence": "render.py QA re-run: clean, no text under 24px"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

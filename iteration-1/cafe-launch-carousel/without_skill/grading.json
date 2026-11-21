@@ -1,0 +1,40 @@
+{
+  "expectations": [
+    {
+      "text": "Between 5 and 7 slide images are rendered as PNG files at 1080x1350 (4:5)",
+      "passed": true,
+      "evidence": "6 PNGs, all 1080x1350"
+    },
+    {
+      "text": "All three flavour names (Classic, Jaggery Cardamom, Kokum Tonic) appear on the slides",
+      "passed": true,
+      "evidence": "One slide per flavour plus menu slide"
+    },
+    {
+      "text": "The slides state the price 220 rupees, Jubilee Hills, that it is available only at the bar, and the Friday launch",
+      "passed": true,
+      "evidence": "Rs 220 per flavour, Jubilee Hills on cover/slide 6, 'Bar only', 'Fri 27 Nov'"
+    },
+    {
+      "text": "The burnt orange #D2561E is used as the accent on a black-led palette",
+      "passed": true,
+      "evidence": "Black field, #D2561E used 6x in CSS"
+    },
+    {
+      "text": "No fake product photography is presented as real (type-led or graphic design, or clearly marked placeholders listed as open items)",
+      "passed": true,
+      "evidence": "Bottles are clearly drawn SVG illustrations, not photos; note: invented '250 ML' label detail, flagged by the agent"
+    },
+    {
+      "text": "A caption for the post is provided in a file",
+      "passed": true,
+      "evidence": "caption.txt present"
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  }
+}

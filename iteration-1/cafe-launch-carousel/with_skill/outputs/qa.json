@@ -1,0 +1,115 @@
+{
+  "slides": [
+    {
+      "slide": 1,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Instrument Serif",
+        "IBM Plex Mono",
+        "Inter Tight"
+      ],
+      "sizes": [
+        132,
+        34,
+        24
+      ],
+      "issues": []
+    },
+    {
+      "slide": 2,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Instrument Serif",
+        "IBM Plex Mono",
+        "Inter Tight"
+      ],
+      "sizes": [
+        420,
+        104,
+        34
+      ],
+      "issues": []
+    },
+    {
+      "slide": 3,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Instrument Serif",
+        "IBM Plex Mono",
+        "Inter Tight"
+      ],
+      "sizes": [
+        184,
+        88,
+        56,
+        36,
+        24
+      ],
+      "issues": [
+        "5 distinct content text sizes (184, 88, 56, 36, 24); hierarchy reads cleaner with 3 or 4"
+      ]
+    },
+    {
+      "slide": 4,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Instrument Serif",
+        "IBM Plex Mono",
+        "Inter Tight"
+      ],
+      "sizes": [
+        184,
+        88,
+        56,
+        36,
+        24
+      ],
+      "issues": [
+        "5 distinct content text sizes (184, 88, 56, 36, 24); hierarchy reads cleaner with 3 or 4"
+      ]
+    },
+    {
+      "slide": 5,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Instrument Serif",
+        "IBM Plex Mono",
+        "Inter Tight"
+      ],
+      "sizes": [
+        184,
+        88,
+        56,
+        36,
+        24
+      ],
+      "issues": [
+        "5 distinct content text sizes (184, 88, 56, 36, 24); hierarchy reads cleaner with 3 or 4"
+      ]
+    },
+    {
+      "slide": 6,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Instrument Serif",
+        "IBM Plex Mono",
+        "Inter Tight"
+      ],
+      "sizes": [
+        132,
+        56,
+        34,
+        24
+      ],
+      "issues": []
+    }
+  ],
+  "broken": [],
+  "fontsMissing": []
+}

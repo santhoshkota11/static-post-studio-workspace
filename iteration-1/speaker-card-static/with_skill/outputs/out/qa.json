@@ -1,0 +1,23 @@
+{
+  "slides": [
+    {
+      "slide": 1,
+      "w": 1080,
+      "h": 1350,
+      "fonts": [
+        "Fraunces",
+        "JetBrains Mono",
+        "Inter Tight"
+      ],
+      "sizes": [
+        120,
+        72,
+        30,
+        26
+      ],
+      "issues": []
+    }
+  ],
+  "broken": [],
+  "fontsMissing": []
+}

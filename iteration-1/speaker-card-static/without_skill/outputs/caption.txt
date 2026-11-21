@@ -1,0 +1,24 @@
+CAPTION
+-------
+Pixel Chai Vol. 4 has a speaker, and she's bringing the good stuff. ☕
+
+Ananya Rao, Principal Product Designer at a fintech startup, is talking about "Designing trust in money apps": what makes someone feel safe enough to tap "Pay", and what makes them close the app instead.
+
+If you design flows, forms, onboarding, or anything that touches someone's money, this one's for you.
+
+🗓 Saturday, 7 Dec
+🕔 5 PM
+📍 The Courtyard, Indiranagar
+
+Seats are limited. RSVP via the link in bio, and bring a friend who argues about microcopy.
+
+#PixelChai #DesignMeetup #BangaloreDesign #ProductDesign #UXDesign #FintechDesign #DesignCommunity #Indiranagar #BLRevents
+
+ALT TEXT
+--------
+Cream speaker-announcement poster in warm chai browns. It reads "pixelchai Vol. 04, Bangalore. Speaker announcement: Designing trust in money apps." "trust" is in terracotta italics with a hand-drawn ginger underline. Below: "a talk by Ananya Rao, Principal Product Designer at a fintech startup." A terracotta "Vol. 04" stamp sits on the right. A dark brown ticket at the bottom lists 7 Dec, Saturday; 5:00 PM; The Courtyard, Indiranagar, Bangalore. "RSVP, link in bio."
+
+CHECK BEFORE POSTING
+--------------------
+- 7 Dec 2026 falls on a MONDAY, not a Saturday (the nearest Saturdays are 5 Dec and 12 Dec). Confirm the date. To fix it, edit the "When" cell in speaker-card.html and run render.py again.
+- "Seats are limited" and "sharp-ish" (under the time) are filler copy I added. Remove them if they don't fit.

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Second Crack Cold Brew Carousel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,200..700,0..100;1,9..144,200..700,0..100&family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0D0B0A;      /* warm black, base */
+    --black-2:#161210;    /* raised surface */
+    --cream:#EFE6D8;      /* primary ink */
+    --muted:#9A8E80;      /* secondary ink */
+    --line:rgba(239,230,216,.16);
+    --orange:#D2561E;     /* brand accent: used sparingly */
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter Tight', Arial, sans-serif;
+    --mono:'IBM Plex Mono', Consolas, monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#222;font-family:var(--sans);color:var(--cream)}
+  .slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--black);margin:0 0 40px}
+
+  /* grain */
+  .slide::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.11;mix-blend-mode:screen;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");}
+
+  /* frame chrome */
+  .chrome{position:absolute;left:72px;right:72px;display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--mono);font-size:19px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);z-index:5}
+  .chrome.top{top:64px}
+  .chrome.bottom{bottom:60px}
+  .chrome .brand{color:var(--cream);font-family:var(--serif);font-size:26px;letter-spacing:.02em;text-transform:none;font-weight:500;font-variation-settings:"opsz" 30}
+  .chrome .brand i{color:var(--orange);font-style:italic}
+  .rule{position:absolute;left:72px;right:72px;height:1px;background:var(--line);z-index:5}
+  .rule.top{top:112px}
+  .rule.bottom{bottom:106px}
+
+  .serif{font-family:var(--serif)}
+  .orange{color:var(--orange)}
+  .eyebrow{font-family:var(--mono);font-size:21px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
+
+  /* ember glow */
+  .glow{position:absolute;border-radius:50%;filter:blur(10px);
+    background:radial-gradient(circle, rgba(210,86,30,.42) 0%, rgba(210,86,30,.14) 38%, rgba(210,86,30,0) 70%)}
+
+  /* ---------- 1 cover ---------- */
+  .s1 h1{position:absolute;left:72px;right:72px;top:170px;font-family:var(--serif);font-weight:300;
+    font-size:148px;line-height:.94;letter-spacing:-.035em;font-variation-settings:"opsz" 144,"SOFT" 30}
+  .s1 h1 em{font-style:italic;color:var(--orange);font-weight:300}
+  .s1 .sub{position:absolute;left:72px;top:520px;width:420px;font-size:25px;line-height:1.45;color:var(--muted)}
+  .s1 .sub b{color:var(--cream);font-weight:500}
+  .s1 .bottles{position:absolute;left:0;right:0;bottom:150px;height:640px;display:flex;justify-content:center;align-items:flex-end;gap:10px}
+  .s1 .date{position:absolute;right:72px;top:520px;text-align:right;font-family:var(--mono);font-size:20px;letter-spacing:.14em;line-height:1.7;text-transform:uppercase;color:var(--cream)}
+  .s1 .date span{color:var(--orange)}
+
+  /* ---------- 2 the idea ---------- */
+  .s2 .big{position:absolute;left:44px;top:120px;font-family:var(--serif);font-weight:200;font-size:620px;line-height:1;
+    letter-spacing:-.06em;color:var(--cream);font-variation-settings:"opsz" 144}
+  .s2 .big sup{font-size:70px;font-style:italic;font-weight:300;letter-spacing:0;color:var(--orange);vertical-align:top;position:relative;top:120px;margin-left:12px}
+  .s2 .dial{position:absolute;right:60px;top:170px}
+  .s2 .copy{position:absolute;left:72px;right:72px;top:770px}
+  .s2 .copy h2{font-family:var(--serif);font-weight:300;font-size:74px;line-height:1.02;letter-spacing:-.025em;font-variation-settings:"opsz" 120}
+  .s2 .copy h2 em{color:var(--orange)}
+  .s2 .copy p{margin-top:34px;max-width:780px;font-size:26px;line-height:1.5;color:var(--muted)}
+  .s2 .copy p b{color:var(--cream);font-weight:500}
+
+  /* ---------- 3-5 flavours ---------- */
+  .flav .num{position:absolute;left:72px;top:150px}
+  .flav .name{position:absolute;left:72px;top:220px;width:560px;font-family:var(--serif);font-weight:300;font-size:118px;line-height:.93;
+    letter-spacing:-.035em;font-variation-settings:"opsz" 144,"SOFT" 20}
+  .flav .name em{font-style:italic;color:var(--orange)}
+  .flav .line{position:absolute;left:72px;width:470px;font-family:var(--serif);font-style:italic;font-weight:300;font-size:38px;line-height:1.22;color:var(--cream);font-variation-settings:"opsz" 40}
+  .flav .desc{position:absolute;left:72px;width:440px;font-size:24px;line-height:1.5;color:var(--muted)}
+  .flav .bottle-wrap{position:absolute;right:40px;top:150px;width:470px;height:880px;display:flex;justify-content:center;align-items:flex-end}
+  .flav .specs{position:absolute;left:72px;right:72px;top:1068px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+  .flav .specs div{padding:26px 22px 0 0}
+  .flav .specs div + div{padding-left:24px;border-left:1px solid var(--line)}
+  .flav .specs small{display:block;font-family:var(--mono);font-size:17px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .flav .specs span{font-family:var(--serif);font-size:31px;line-height:1.15;font-weight:400;font-variation-settings:"opsz" 30}
+  .flav .specs .price{color:var(--orange)}
+
+  /* ---------- 6 details ---------- */
+  .s6 .eyebrow{position:absolute;left:72px;top:170px}
+  .s6 h2{position:absolute;left:72px;right:72px;top:220px;font-family:var(--serif);font-weight:300;font-size:132px;line-height:.95;letter-spacing:-.035em;font-variation-settings:"opsz" 144,"SOFT" 30}
+  .s6 h2 em{color:var(--orange)}
+  .s6 .menu{position:absolute;left:72px;right:72px;top:630px;border-top:1px solid var(--line)}
+  .s6 .row{display:flex;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--line)}
+  .s6 .row .n{font-family:var(--mono);font-size:19px;letter-spacing:.14em;color:var(--orange);width:90px}
+  .s6 .row .t{font-family:var(--serif);font-size:50px;font-weight:300;letter-spacing:-.015em;font-variation-settings:"opsz" 72}
+  .s6 .row .t i{font-size:26px;color:var(--muted);font-style:italic;margin-left:14px;letter-spacing:0}
+  .s6 .row .dots{flex:1;border-bottom:1px dotted rgba(239,230,216,.28);margin:0 22px;transform:translateY(-10px)}
+  .s6 .row .p{font-family:var(--serif);font-size:44px;font-weight:400;font-variation-settings:"opsz" 48}
+  .s6 .info{position:absolute;left:72px;right:72px;bottom:150px;display:flex;justify-content:space-between;align-items:flex-end}
+  .s6 .info .where{font-size:25px;line-height:1.5;color:var(--muted)}
+  .s6 .info .where b{display:block;color:var(--cream);font-weight:500;font-size:27px}
+  .s6 .stamp{width:180px;height:180px;border-radius:50%;border:1.5px solid var(--orange);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--orange);transform:rotate(-8deg)}
+  .s6 .stamp b{font-family:var(--serif);font-style:italic;font-weight:300;font-size:40px;line-height:1;color:var(--cream)}
+  .s6 .stamp small{font-family:var(--mono);font-size:15px;letter-spacing:.16em;text-transform:uppercase;margin-top:10px;line-height:1.5}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — COVER -->
+<section class="slide s1" id="s1">
+  <div class="chrome top"><span class="brand">Second <i>Crack</i></span><span>Cold Brew · Vol.01</span></div>
+  <div class="rule top"></div>
+  <h1>No fire.<br><em>Just time.</em></h1>
+  <p class="sub">Three cold brews, steeped slow at our Jubilee Hills bar. <b>Launching Friday.</b></p>
+  <div class="date">Fri · 27 Nov<br><span>Bar only</span></div>
+  <div class="glow" style="left:240px;bottom:60px;width:600px;height:600px"></div>
+  <div class="bottles">
+    <div data-bottle="classic" data-scale=".66" data-no="01"></div>
+    <div data-bottle="jaggery" data-scale=".80" data-no="02"></div>
+    <div data-bottle="kokum" data-scale=".66" data-no="03"></div>
+  </div>
+  <div class="rule bottom"></div>
+  <div class="chrome bottom"><span>Jubilee Hills · Hyderabad</span><span>Swipe &rarr;</span></div>
+</section>
+
+<!-- SLIDE 2 — THE IDEA -->
+<section class="slide s2" id="s2">
+  <div class="chrome top"><span class="brand">Second <i>Crack</i></span><span>02 / 06</span></div>
+  <div class="rule top"></div>
+  <div class="big">14<sup>hrs</sup></div>
+  <svg class="dial" width="300" height="300" viewBox="0 0 300 300" id="dial"></svg>
+  <div class="copy">
+    <h2>Our name is a roasting term. <em>This range uses no heat at all.</em></h2>
+    <p><b>Cold water, our coffee, fourteen hours.</b> Patience pulls out the chocolate and fruit and leaves the harsh bitterness behind. Smooth, round, quietly sweet.</p>
+  </div>
+  <div class="rule bottom"></div>
+  <div class="chrome bottom"><span>The method</span><span>Steeped in-house</span></div>
+</section>
+
+<!-- SLIDE 3 — CLASSIC -->
+<section class="slide flav" id="s3">
+  <div class="chrome top"><span class="brand">Second <i>Crack</i></span><span>03 / 06</span></div>
+  <div class="rule top"></div>
+  <div class="eyebrow num">No. 01</div>
+  <div class="name">The<br><em>Classic</em></div>
+  <div class="line" style="top:470px">Fourteen hours.<br>Nothing added.</div>
+  <p class="desc" style="top:610px">The purest version of what we do. Black, over ice, nothing to hide behind. The one to start with.</p>
+  <div class="glow" style="right:20px;top:430px;width:560px;height:560px"></div>
+  <div class="bottle-wrap"><div data-bottle="classic" data-scale="1.08" data-no="01"></div></div>
+  <div class="specs">
+    <div><small>Steep</small><span>14 hours</span></div>
+    <div><small>Tastes like</small><span>Cocoa, dark&nbsp;fruit</span></div>
+    <div><small>Serve</small><span>Black, on ice</span></div>
+    <div><small>Price</small><span class="price">₹220</span></div>
+  </div>
+  <div class="rule bottom" style="opacity:0"></div>
+  <div class="chrome bottom"><span>Cold Brew · Vol.01</span><span>&rarr;</span></div>
+</section>
+
+<!-- SLIDE 4 — JAGGERY CARDAMOM -->
+<section class="slide flav" id="s4">
+  <div class="chrome top"><span class="brand">Second <i>Crack</i></span><span>04 / 06</span></div>
+  <div class="rule top"></div>
+  <div class="eyebrow num">No. 02</div>
+  <div class="name">Jaggery<br><em>Cardamom</em></div>
+  <div class="line" style="top:470px">Amma's kitchen,<br>served ice cold.</div>
+  <p class="desc" style="top:610px">Our cold brew rounded out with jaggery's deep caramel and a lift of green cardamom. Familiar, then surprising.</p>
+  <div class="glow" style="right:20px;top:430px;width:560px;height:560px"></div>
+  <div class="bottle-wrap"><div data-bottle="jaggery" data-scale="1.08" data-no="02"></div></div>
+  <div class="specs">
+    <div><small>Base</small><span>14-hr cold brew</span></div>
+    <div><small>Tastes like</small><span>Caramel, warm spice</span></div>
+    <div><small>Mood</small><span>Slow afternoon</span></div>
+    <div><small>Price</small><span class="price">₹220</span></div>
+  </div>
+  <div class="chrome bottom"><span>Cold Brew · Vol.01</span><span>&rarr;</span></div>
+</section>
+
+<!-- SLIDE 5 — KOKUM TONIC -->
+<section class="slide flav" id="s5">
+  <div class="chrome top"><span class="brand">Second <i>Crack</i></span><span>05 / 06</span></div>
+  <div class="rule top"></div>
+  <div class="eyebrow num">No. 03</div>
+  <div class="name">Kokum<br><em>Tonic</em></div>
+  <div class="line" style="top:470px">Sour, bright,<br>and a little wild.</div>
+  <p class="desc" style="top:610px">Konkan kokum meets tonic and our cold brew. Tart up front, bittersweet fizz at the end. The one people will talk about.</p>
+  <div class="glow" style="right:20px;top:430px;width:560px;height:560px"></div>
+  <div class="bottle-wrap"><div data-bottle="kokum" data-scale="1.08" data-no="03"></div></div>
+  <div class="specs">
+    <div><small>Base</small><span>14-hr cold brew</span></div>
+    <div><small>Tastes like</small><span>Tart fruit, fizz</span></div>
+    <div><small>Mood</small><span>Midday heat</span></div>
+    <div><small>Price</small><span class="price">₹220</span></div>
+  </div>
+  <div class="chrome bottom"><span>Cold Brew · Vol.01</span><span>&rarr;</span></div>
+</section>
+
+<!-- SLIDE 6 — DETAILS -->
+<section class="slide s6" id="s6">
+  <div class="chrome top"><span class="brand">Second <i>Crack</i></span><span>06 / 06</span></div>
+  <div class="rule top"></div>
+  <div class="eyebrow">From Friday, 27 November</div>
+  <h2>Three bottles.<br>One bar.<br><em>No delivery.</em></h2>
+  <div class="menu">
+    <div class="row"><span class="n">01</span><span class="t">Classic<i>black, slow steeped</i></span><span class="dots"></span><span class="p">₹220</span></div>
+    <div class="row"><span class="n">02</span><span class="t">Jaggery Cardamom</span><span class="dots"></span><span class="p">₹220</span></div>
+    <div class="row"><span class="n">03</span><span class="t">Kokum Tonic</span><span class="dots"></span><span class="p">₹220</span></div>
+  </div>
+  <div class="info">
+    <div class="where"><b>Second Crack, Jubilee Hills</b>Available only at the bar.<br>Save this. Bring someone. Try all three.</div>
+    <div class="stamp"><b>Bar<br>only</b><small>Hyderabad</small></div>
+  </div>
+  <div class="rule bottom"></div>
+  <div class="chrome bottom"><span>Cold Brew · Vol.01</span><span>@secondcrack</span></div>
+</section>
+
+<script>
+const FLAVOURS = {
+  classic: {name:'Classic',     sub:'Slow steeped',  top:'#3a2418', bot:'#120a06', hi:'#6b3a1e'},
+  jaggery: {name:'Jaggery',     sub:'Cardamom',     top:'#a3591f', bot:'#3a1a08', hi:'#d98a3c'},
+  kokum:   {name:'Kokum',       sub:'Tonic',        top:'#7a2238', bot:'#2a0710', hi:'#b8405a', fizz:true}
+};
+let uid = 0;
+function bottleSVG(key, scale, no){
+  const f = FLAVOURS[key]; const id = 'b'+(uid++);
+  const W = 300*scale, H = 760*scale;
+  const body = "M118,92 L182,92 L182,150 C182,192 280,200 280,252 L280,712 Q280,752 240,752 L60,752 Q20,752 20,712 L20,252 C20,200 118,192 118,150 Z";
+  let bubbles = '';
+  if (f.fizz){
+    const pts=[[70,690,5],[96,640,3],[210,700,4],[236,610,3],[150,560,2.5],[64,520,3],[222,470,2.5],[110,430,2],[250,380,3],[80,330,2]];
+    bubbles = pts.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="${p[2]}" fill="none" stroke="#f3c6cf" stroke-opacity=".45" stroke-width="1.2"/>`).join('');
+  }
+  return `<svg width="${W}" height="${H}" viewBox="0 0 300 760" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="${id}c"><path d="${body}"/></clipPath>
+    <linearGradient id="${id}l" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${f.top}"/><stop offset="1" stop-color="${f.bot}"/></linearGradient>
+    <linearGradient id="${id}s" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000" stop-opacity=".0"/><stop offset=".75" stop-color="#000" stop-opacity=".0"/><stop offset="1" stop-color="#000" stop-opacity=".45"/></linearGradient>
+    <linearGradient id="${id}cap" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1c1714"/><stop offset=".35" stop-color="#3a322c"/><stop offset="1" stop-color="#110e0c"/></linearGradient>
+  </defs>
+  <g clip-path="url(#${id}c)">
+    <rect x="0" y="0" width="300" height="760" fill="rgba(239,230,216,.035)"/>
+    <rect x="0" y="232" width="300" height="540" fill="url(#${id}l)"/>
+    <rect x="0" y="230" width="300" height="5" fill="${f.hi}" opacity=".9"/>
+    ${bubbles}
+    <rect x="0" y="0" width="300" height="760" fill="url(#${id}s)"/>
+    <rect x="34" y="262" width="9" height="430" rx="4.5" fill="#fff" opacity=".13"/>
+    <rect x="50" y="262" width="3" height="300" rx="1.5" fill="#fff" opacity=".08"/>
+  </g>
+  <path d="${body}" fill="none" stroke="rgba(239,230,216,.42)" stroke-width="1.6"/>
+  <!-- cap -->
+  <rect x="110" y="18" width="80" height="78" rx="5" fill="url(#${id}cap)" stroke="rgba(239,230,216,.25)" stroke-width="1"/>
+  ${Array.from({length:9},(_,i)=>`<line x1="${118+i*8}" y1="26" x2="${118+i*8}" y2="88" stroke="rgba(239,230,216,.07)" stroke-width="1"/>`).join('')}
+  <rect x="110" y="84" width="80" height="12" fill="#D2561E"/>
+  <!-- label -->
+  <rect x="48" y="392" width="204" height="262" fill="#EFE6D8"/>
+  <text x="150" y="430" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" letter-spacing="3" fill="#0D0B0A">SECOND CRACK</text>
+  <line x1="72" y1="446" x2="228" y2="446" stroke="#0D0B0A" stroke-opacity=".25"/>
+  <text x="150" y="500" text-anchor="middle" font-family="Fraunces" font-size="38" font-weight="400" fill="#0D0B0A" letter-spacing="-.5">${f.name}</text>
+  <text x="150" y="536" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="24" font-weight="300" fill="#D2561E">${f.sub}</text>
+  <text x="150" y="592" text-anchor="middle" font-family="IBM Plex Mono" font-size="10.5" letter-spacing="2.5" fill="#0D0B0A" fill-opacity=".6">COLD BREW · NO.${no}</text>
+  <rect x="48" y="626" width="204" height="28" fill="#D2561E"/>
+  <text x="150" y="645" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" letter-spacing="3" fill="#EFE6D8">250 ML · KEEP COLD</text>
+  <!-- glass reflection on label -->
+  <rect x="48" y="392" width="204" height="262" fill="url(#${id}s)" opacity=".7"/>
+</svg>`;
+}
+document.querySelectorAll('[data-bottle]').forEach(el=>{
+  el.innerHTML = bottleSVG(el.dataset.bottle, parseFloat(el.dataset.scale), el.dataset.no);
+});
+
+// 14-hour dial
+(function(){
+  const s = document.getElementById('dial'); const cx=150, cy=150, r=118; let out='';
+  out += `<circle cx="${cx}" cy="${cy}" r="${r+18}" fill="none" stroke="rgba(239,230,216,.16)"/>`;
+  for(let i=0;i<24;i++){
+    const a = (i/24)*Math.PI*2 - Math.PI/2; const on = i<14;
+    const r1 = r-(on?26:14), r2 = r;
+    out += `<line x1="${cx+Math.cos(a)*r1}" y1="${cy+Math.sin(a)*r1}" x2="${cx+Math.cos(a)*r2}" y2="${cy+Math.sin(a)*r2}" stroke="${on?'#D2561E':'rgba(239,230,216,.28)'}" stroke-width="${on?3:1.5}" stroke-linecap="round"/>`;
+  }
+  const end = (14/24)*Math.PI*2 - Math.PI/2;
+  out += `<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(end)*(r-40)}" y2="${cy+Math.sin(end)*(r-40)}" stroke="#EFE6D8" stroke-width="2"/>`;
+  out += `<circle cx="${cx}" cy="${cy}" r="5" fill="#D2561E"/>`;
+  out += `<text x="${cx}" y="${cy+r+50}" text-anchor="middle" font-family="IBM Plex Mono" font-size="15" letter-spacing="3" fill="#9A8E80">14 OF 24 HOURS</text>`;
+  s.setAttribute('height', 340); s.setAttribute('viewBox','0 0 300 340');
+  s.innerHTML = out;
+})();
+</script>
+</body>
+</html>

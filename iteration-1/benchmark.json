@@ -1,0 +1,344 @@
+{
+  "metadata": {
+    "skill_name": "static-post-studio",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-11-18T12:59:10Z",
+    "evals_run": [
+      "cafe-launch-carousel",
+      "explainer-real-estate",
+      "speaker-card-static"
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": "cafe-launch-carousel",
+      "eval_name": "cafe-launch-carousel",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 618.9,
+        "tokens": 144903,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Between 5 and 7 slide images are rendered as PNG files at 1080x1350 (4:5)",
+          "passed": true,
+          "evidence": "6 PNGs slide-01..06, all 1080x1350"
+        },
+        {
+          "text": "All three flavour names (Classic, Jaggery Cardamom, Kokum Tonic) appear on the slides",
+          "passed": true,
+          "evidence": "Slides 3-5 and 6 name Classic, Jaggery Cardamom, Kokum Tonic"
+        },
+        {
+          "text": "The slides state the price 220 rupees, Jubilee Hills, that it is available only at the bar, and the Friday launch",
+          "passed": true,
+          "evidence": "Rs 220 on slides 3-6; 'Jubilee Hills, Hyderabad' slide 6; 'Only at the bar'; 'Friday 27 Nov' on 1 and 6"
+        },
+        {
+          "text": "The burnt orange #D2561E is used as the accent on a black-led palette",
+          "passed": true,
+          "evidence": "Warm near-black field, #D2561E used 3x in CSS for accent and slide-6 field"
+        },
+        {
+          "text": "No fake product photography is presented as real (type-led or graphic design, or clearly marked placeholders listed as open items)",
+          "passed": true,
+          "evidence": "Type-led with a steep-dial graphic; no product imagery at all"
+        },
+        {
+          "text": "A caption for the post is provided in a file",
+          "passed": true,
+          "evidence": "caption.txt present"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": "explainer-real-estate",
+      "eval_name": "explainer-real-estate",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 458.6,
+        "tokens": 138298,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Exactly 7 slide images are rendered as PNG files in a 4:5 (1080x1350) format",
+          "passed": true,
+          "evidence": "7 PNGs at 1080x1350"
+        },
+        {
+          "text": "Slide 1 is a hook cover and slides 2-6 each cover one distinct thing to check on the RERA website",
+          "passed": true,
+          "evidence": "Cover hook '5 things to check on RERA, before you book a flat'; slides 2-6: registration, approved plan, land title, progress, track record"
+        },
+        {
+          "text": "The final slide asks people to DM 'RERA' for the free checklist",
+          "passed": true,
+          "evidence": "Slide 7: 'DM us \"RERA\"' panel for the free checklist"
+        },
+        {
+          "text": "The design uses no photographs (graphic only) in a navy and sand palette",
+          "passed": true,
+          "evidence": "No images; navy #13254A and sand #EEE6D8 (plus a small clay accent for red flags)"
+        },
+        {
+          "text": "A caption and per-slide alt text are provided in files",
+          "passed": true,
+          "evidence": "caption.md contains caption, hashtags and alt text per slide"
+        },
+        {
+          "text": "No body text on any slide is smaller than 24 px at 1080 px width (excluding legal/micro text)",
+          "passed": true,
+          "evidence": "render.py QA re-run: clean, no text under 24px"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": "speaker-card-static",
+      "eval_name": "speaker-card-static",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 279.8,
+        "tokens": 109867,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "A single static image is rendered as a PNG file in an Instagram feed size (1080 wide)",
+          "passed": true,
+          "evidence": "out/slide-01.png 1080x1350"
+        },
+        {
+          "text": "The image shows the speaker name Ananya Rao, her role, the talk title 'Designing trust in money apps', Saturday 7 Dec, 5 PM, and The Courtyard, Indiranagar",
+          "passed": true,
+          "evidence": "Ananya Rao; Principal Product Designer, fintech startup; 'Designing trust in money apps'; Sat 7 Dec 5:00 PM; The Courtyard, Indiranagar"
+        },
+        {
+          "text": "The design is type-led with no portrait or invented photo of the speaker",
+          "passed": true,
+          "evidence": "Receipt concept, all type, no portrait"
+        },
+        {
+          "text": "A caption for the post is provided in a file",
+          "passed": true,
+          "evidence": "Caption section in brief.md (line 67), not a separate caption file"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": "cafe-launch-carousel",
+      "eval_name": "cafe-launch-carousel",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 225.9,
+        "tokens": 95593,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Between 5 and 7 slide images are rendered as PNG files at 1080x1350 (4:5)",
+          "passed": true,
+          "evidence": "6 PNGs, all 1080x1350"
+        },
+        {
+          "text": "All three flavour names (Classic, Jaggery Cardamom, Kokum Tonic) appear on the slides",
+          "passed": true,
+          "evidence": "One slide per flavour plus menu slide"
+        },
+        {
+          "text": "The slides state the price 220 rupees, Jubilee Hills, that it is available only at the bar, and the Friday launch",
+          "passed": true,
+          "evidence": "Rs 220 per flavour, Jubilee Hills on cover/slide 6, 'Bar only', 'Fri 27 Nov'"
+        },
+        {
+          "text": "The burnt orange #D2561E is used as the accent on a black-led palette",
+          "passed": true,
+          "evidence": "Black field, #D2561E used 6x in CSS"
+        },
+        {
+          "text": "No fake product photography is presented as real (type-led or graphic design, or clearly marked placeholders listed as open items)",
+          "passed": true,
+          "evidence": "Bottles are clearly drawn SVG illustrations, not photos; note: invented '250 ML' label detail, flagged by the agent"
+        },
+        {
+          "text": "A caption for the post is provided in a file",
+          "passed": true,
+          "evidence": "caption.txt present"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": "explainer-real-estate",
+      "eval_name": "explainer-real-estate",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.83,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 211.6,
+        "tokens": 93134,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Exactly 7 slide images are rendered as PNG files in a 4:5 (1080x1350) format",
+          "passed": true,
+          "evidence": "7 PNGs at 1080x1350"
+        },
+        {
+          "text": "Slide 1 is a hook cover and slides 2-6 each cover one distinct thing to check on the RERA website",
+          "passed": true,
+          "evidence": "Cover hook plus 5 checks on slides 2-6"
+        },
+        {
+          "text": "The final slide asks people to DM 'RERA' for the free checklist",
+          "passed": true,
+          "evidence": "Slide 7: 'Just type RERA' DM panel"
+        },
+        {
+          "text": "The design uses no photographs (graphic only) in a navy and sand palette",
+          "passed": true,
+          "evidence": "No photos; navy and sand; mock portal cards are graphics"
+        },
+        {
+          "text": "A caption and per-slide alt text are provided in files",
+          "passed": true,
+          "evidence": "caption.txt has caption plus alt text per slide"
+        },
+        {
+          "text": "No body text on any slide is smaller than 24 px at 1080 px width (excluding legal/micro text)",
+          "passed": false,
+          "evidence": "render.py QA on its HTML: 55 text runs below 24px (17-22px labels, card rows, red-flag text)"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": "speaker-card-static",
+      "eval_name": "speaker-card-static",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 119.7,
+        "tokens": 74079,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "A single static image is rendered as a PNG file in an Instagram feed size (1080 wide)",
+          "passed": true,
+          "evidence": "pixel-chai-vol4-speaker-1080x1350.png"
+        },
+        {
+          "text": "The image shows the speaker name Ananya Rao, her role, the talk title 'Designing trust in money apps', Saturday 7 Dec, 5 PM, and The Courtyard, Indiranagar",
+          "passed": true,
+          "evidence": "All details visible: name, role, title, 7 Dec Saturday, 5:00 PM, The Courtyard, Indiranagar"
+        },
+        {
+          "text": "The design is type-led with no portrait or invented photo of the speaker",
+          "passed": true,
+          "evidence": "Type-led with a stamp and cup rings, no portrait"
+        },
+        {
+          "text": "A caption for the post is provided in a file",
+          "passed": true,
+          "evidence": "caption.txt present"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 452.4333,
+        "stddev": 169.6341,
+        "min": 279.8,
+        "max": 618.9
+      },
+      "tokens": {
+        "mean": 131022.6667,
+        "stddev": 18616.6103,
+        "min": 109867,
+        "max": 144903
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.9433,
+        "stddev": 0.0981,
+        "min": 0.83,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 185.7333,
+        "stddev": 57.6318,
+        "min": 119.7,
+        "max": 225.9
+      },
+      "tokens": {
+        "mean": 87602.0,
+        "stddev": 11775.6238,
+        "min": 74079,
+        "max": 95593
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.06",
+      "time_seconds": "+266.7",
+      "tokens": "+43421"
+    }
+  },
+  "notes": [
+    "Most assertions pass in both configurations (non-discriminating): Opus already renders competent 1080x1350 PNGs and gets facts right without the skill. The only discriminating check was minimum text size (baseline RERA had 55 runs under 24px).",
+    "Qualitative difference is larger than the pass rate shows: with-skill runs produced one ownable concept each (receipt 'speaker confirmed', ledger checkbox progression, 'named after the heat') plus a brief with alternates, a brand kit and phone/grid previews.",
+    "Weak spot in with-skill output: 'prefer type-led' made two runs too sparse. RERA check slides have an empty middle band; the cafe carousel never shows the product, while the baseline drew illustrated bottles and portal mock-ups that make the content concrete.",
+    "Cost: with-skill runs took about 1.5-2.7x the time and 1.3-1.5x the tokens (more reading plus 2-3 render/QA loops)."
+  ]
+}

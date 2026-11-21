@@ -1,0 +1,12 @@
+{
+  "eval_name": "cafe-launch-carousel",
+  "prompt": "hey so i run a small specialty coffee bar in hyderabad (jubilee hills) called Second Crack. we're launching a cold brew range next friday, 3 flavours: Classic (14hr steep), Jaggery Cardamom, and Kokum Tonic. \u20b9220 each, available only at the bar. need an insta carousel, around 6 slides, that makes it look premium not like a cheap canva thing. we dont have product photos yet, shoot is next week. our colours are basically black + a burnt orange (#D2561E) and we like clean serif-ish type",
+  "assertions": [
+    "Between 5 and 7 slide images are rendered as PNG files at 1080x1350 (4:5)",
+    "All three flavour names (Classic, Jaggery Cardamom, Kokum Tonic) appear on the slides",
+    "The slides state the price 220 rupees, Jubilee Hills, that it is available only at the bar, and the Friday launch",
+    "The burnt orange #D2561E is used as the accent on a black-led palette",
+    "No fake product photography is presented as real (type-led or graphic design, or clearly marked placeholders listed as open items)",
+    "A caption for the post is provided in a file"
+  ]
+}

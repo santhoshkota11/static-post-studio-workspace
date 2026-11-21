@@ -1,0 +1,30 @@
+{
+  "expectations": [
+    {
+      "text": "A single static image is rendered as a PNG file in an Instagram feed size (1080 wide)",
+      "passed": true,
+      "evidence": "out/slide-01.png 1080x1350"
+    },
+    {
+      "text": "The image shows the speaker name Ananya Rao, her role, the talk title 'Designing trust in money apps', Saturday 7 Dec, 5 PM, and The Courtyard, Indiranagar",
+      "passed": true,
+      "evidence": "Ananya Rao; Principal Product Designer, fintech startup; 'Designing trust in money apps'; Sat 7 Dec 5:00 PM; The Courtyard, Indiranagar"
+    },
+    {
+      "text": "The design is type-led with no portrait or invented photo of the speaker",
+      "passed": true,
+      "evidence": "Receipt concept, all type, no portrait"
+    },
+    {
+      "text": "A caption for the post is provided in a file",
+      "passed": true,
+      "evidence": "Caption section in brief.md (line 67), not a separate caption file"
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  }
+}
